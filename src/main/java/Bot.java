@@ -12,8 +12,6 @@ public class Bot extends TelegramLongPollingBot {
 
     MessageListener messageListener = new MessageListener();
 
-    @Getter
-    private static Integer square;
 
     @Override
     public void onUpdateReceived(Update update) {

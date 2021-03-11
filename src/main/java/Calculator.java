@@ -12,7 +12,7 @@ public class Calculator {
         double TOTAL_PRICE = 0;
         double UNIT_TOTAL_PRICE = 0;
         try {
-            while (id != 106) {
+            while (id != 6) {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             String sql4 = "SELECT CEILING(consumption_rate/quantity*"+S+")*unit_price AS price FROM floor_premium WHERE id = "+id;
             Statement statement = connection.createStatement();

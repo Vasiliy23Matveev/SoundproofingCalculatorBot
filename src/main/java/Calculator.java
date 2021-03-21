@@ -6,7 +6,7 @@ public class Calculator {
 
         String jdbcURL = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = " ";
+        String password = "J1nk1nkent";
         
         int id = 1;
         double TOTAL_PRICE = 0;

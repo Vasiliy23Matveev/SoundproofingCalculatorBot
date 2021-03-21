@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 
 import java.util.ArrayList;
 
-public class Keyboard {
+public class KeyboardConstructor {
 
     public ReplyKeyboardMarkup startKeyboard() {
         ArrayList<KeyboardRow> keyboardRows = new ArrayList<>();

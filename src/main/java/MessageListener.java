@@ -6,22 +6,23 @@ public class MessageListener {
     //ServerMessage serverMessage = new ServerMessage();
 
 
-    public SendMessage getMessage(long chat_id, String text, String userName) {
+    public SendMessage createAnswerFromServer(Message message) {
 
         SendMessage sendMessage = new SendMessage();
 
-        if ("/start".equals(text)) {
-            sendMessage = ServerMessage.start(chat_id);
-        } else if ("Продолжить \uD83C\uDFE0".equals(text)) {
-            sendMessage = ServerMessage.noiseTypeSelect(chat_id);
-        } else if ("Голос \uD83D\uDC68".equals(text) || "Музыка \uD83C\uDFB8".equals(text) || "Собачий лай \uD83D\uDC36".equals(text) || "Топот \uD83D\uDC63".equals(text)) {
-            sendMessage = ServerMessage.houseTypeSelect(chat_id);
-        } else if ("Шум оборудования \uD83C\uDFED".equals(text) || "Гостиницы/отели \uD83C\uDFE8".equals(text) || "Панельный \uD83C\uDFE4".equals(text) || "Кирпичный \uD83C\uDFE2".equals(text) || "Монолитный \uD83C\uDFE2".equals(text) || "Загородный \uD83C\uDFE1".equals(text)) {
-            sendMessage = ServerMessage.noiseDirectionSelect(chat_id);
-        } else if ("Пол \uD83D\uDC4E".equals(text) || "Потолок \uD83D\uDC46".equals(text) || "Стены \uD83D\uDC48".equals(text) || "Перегородка \uD83D\uDC49".equals(text)) {
-            sendMessage = ServerMessage.enterSquare(chat_id);
-        } else if (text.matches("[-]?[0-9]+(.[0-9]+)?")) {
-            sendMessage = ServerMessage.calculate(chat_id, Integer.parseInt(text));
+        if ("/start".equals(message.text)) {
+            sendMessage = ReplyMessageConstructor.start(message.chat_id);
+
+        } else if ("Продолжить \uD83C\uDFE0".equals(message.text)) {
+            sendMessage = ReplyMessageConstructor.noiseTypeSelect(message.chat_id);
+        } else if ("Голос \uD83D\uDC68".equals(message.text) || "Музыка \uD83C\uDFB8".equals(message.text) || "Собачий лай \uD83D\uDC36".equals(message.text) || "Топот \uD83D\uDC63".equals(message.text)) {
+            sendMessage = ReplyMessageConstructor.houseTypeSelect(message.chat_id);
+        } else if ("Шум оборудования \uD83C\uDFED".equals(message.text) || "Гостиницы/отели \uD83C\uDFE8".equals(message.text) || "Панельный \uD83C\uDFE4".equals(message.text) || "Кирпичный \uD83C\uDFE2".equals(message.text) || "Монолитный \uD83C\uDFE2".equals(message.text) || "Загородный \uD83C\uDFE1".equals(message.text)) {
+            sendMessage = ReplyMessageConstructor.noiseDirectionSelect(message.chat_id);
+        } else if ("Пол \uD83D\uDC4E".equals(message.text) || "Потолок \uD83D\uDC46".equals(message.text) || "Стены \uD83D\uDC48".equals(message.text) || "Перегородка \uD83D\uDC49".equals(message.text)) {
+            sendMessage = ReplyMessageConstructor.enterSquare(message.chat_id);
+        } else if (message.text.matches("[-]?[0-9]+(.[0-9]+)?")) {
+            sendMessage = ReplyMessageConstructor.calculate(message.chat_id, Integer.parseInt(message.text));
         }
 
         return sendMessage;

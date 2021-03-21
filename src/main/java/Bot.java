@@ -16,10 +16,13 @@ public class Bot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()) {
+
             long chat_id =update.getMessage().getChatId();
             String text = update.getMessage().getText();
             String userName = update.getMessage().getForwardSenderName();
-            sendMessageFromServer(messageListener.getMessage(chat_id, text, userName));
+
+            Message message = new Message(chat_id, text, userName);
+            sendMessageFromServer(messageListener.createAnswerFromServer(message));
         }
     }
 
@@ -30,6 +33,7 @@ public class Bot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
+
 
 
     @Override

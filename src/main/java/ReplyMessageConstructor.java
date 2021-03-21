@@ -1,22 +1,23 @@
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
-public class ServerMessage {
-    static Keyboard keyboard = new Keyboard();
+public class ReplyMessageConstructor {
+
+    static KeyboardConstructor keyboardConstructor = new KeyboardConstructor();
     static Calculator calculator = new Calculator();
 
 
     static SendMessage start(long chat_id) {
-        return createMessage(chat_id, start_message, keyboard.startKeyboard());
+        return createMessage(chat_id, start_message, keyboardConstructor.startKeyboard());
     }
     public static SendMessage noiseTypeSelect(long chat_id) {
-        return createMessage(chat_id, noiseTypeSelect, keyboard.noiseTypeSelectKeyboard());
+        return createMessage(chat_id, noiseTypeSelect, keyboardConstructor.noiseTypeSelectKeyboard());
     }
     public static SendMessage houseTypeSelect(long chat_id) {
-        return createMessage(chat_id, houseTypeSelect,keyboard.houseTypeSelectKeyboard());
+        return createMessage(chat_id, houseTypeSelect,keyboardConstructor.houseTypeSelectKeyboard());
     }
     public static SendMessage noiseDirectionSelect(long chat_id) {
-        return  createMessage(chat_id, noiseDirectionSelect, keyboard.noiseDirectionSelectKeyboard());
+        return  createMessage(chat_id, noiseDirectionSelect, keyboardConstructor.noiseDirectionSelectKeyboard());
     }
     public static SendMessage enterSquare(long chat_id) {
         return createMessage(chat_id, enterSquare);
@@ -27,7 +28,7 @@ public class ServerMessage {
     }
 
     public static SendMessage calculate(long chat_id, int S) {
-        return createMessage(chat_id, " "+ calculator.calculate(S) +" ", keyboard.startKeyboard());
+        return createMessage(chat_id, " "+ calculator.calculate(S) +" ", keyboardConstructor.startKeyboard());
     }
 
 
